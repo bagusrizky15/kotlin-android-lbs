@@ -1,6 +1,7 @@
 package com.rivvana.kotlin_android_lbs
 
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.app.ActivityCompat
@@ -9,15 +10,15 @@ import com.google.android.gms.location.LocationServices
 import com.rivvana.kotlin_android_lbs.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    lateinit var geocoder: Geocoder
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        geocoder = Geocoder(this, )
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
         binding.btnGetLocation.setOnClickListener {
             fetchLocation()
         }
